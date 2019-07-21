@@ -3,7 +3,7 @@ require('laravel-mix-merge-manifest');
 
 mix.setPublicPath('../../public').mergeManifest();
 
-mix.js(__dirname + '/Resources/assets/js/app.js', 'js/materialcrewredux.js')
+mix.js(__dirname + '/Resources/assets/js/main.js', 'js/materialcrewredux.js')
     .sass( __dirname + '/Resources/assets/sass/app.scss', 'css/materialcrewredux.css');
 
 if (mix.inProduction()) {

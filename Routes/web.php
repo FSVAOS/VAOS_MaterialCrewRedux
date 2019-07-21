@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('materialcrewredux')->group(function() {
+Route::prefix(env('MATERIAL_CREW_BASE_URL','crewops'))->group(function() {
     Route::get('/', 'MaterialCrewReduxController@index');
 });
