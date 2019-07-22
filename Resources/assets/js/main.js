@@ -24,7 +24,11 @@ import 'vuetify/dist/vuetify.min.css'
 import mainLayout from './views/Layouts/MainLayout'
 Vue.component('main-layout', mainLayout);
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+    options: {
+        customProperties: true
+    }
+});
 
 new Vue({
     router,
