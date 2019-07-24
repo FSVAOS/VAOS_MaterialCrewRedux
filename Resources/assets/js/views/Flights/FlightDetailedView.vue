@@ -2,7 +2,7 @@
     <div>
         <FlightBriefing v-if="flight.state === 0"></FlightBriefing>
         <FlightActive v-if="flight.state === 1"></FlightActive>
-        <PostFlight v-if="flight.state === 2"></PostFlight>
+        <PostFlight v-if="flight.state === 2" :flight="flight"></PostFlight>
     </div>
 </template>
 

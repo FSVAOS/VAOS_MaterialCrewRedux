@@ -1,6 +1,25 @@
 <template>
     <div>
         <v-container fluid grid-list-md>
+            <v-layout row wrap fill-height>
+                <v-flex md9 xs12>
+                    <FlightProgresCard></FlightProgresCard>
+                </v-flex>
+                <v-flex md3 xs12>
+                    <v-img fill-height src="/img/vaos_df_bg-01.svg" gradient="rgba(100,115,201,.33), rgba(25,32,72,.7)">
+                        <v-layout pa-2 column align-center fill-height class="lightbox white--text">
+                            <v-spacer></v-spacer>
+                            <v-avatar size="84">
+                                <img src="https://pbs.twimg.com/profile_images/1151671407228706822/UZxOws2b_400x400.jpg" alt="John" style="border: white 3px solid;">
+                            </v-avatar>
+                            <v-flex shrink style="text-align:center">
+                                <div class="headline">Taylor Broad</div>
+                                <div class="body-1">BossOfGames | Senior Captain</div>
+                            </v-flex>
+                        </v-layout>
+                    </v-img>
+                </v-flex>
+            </v-layout>
             <v-layout row wrap>
                 <v-flex md9 xs12>
                     <v-card>
@@ -61,8 +80,11 @@
 </template>
 
 <script>
+    import FlightProgresCard from "../../../components/FlightProgresCard";
     export default {
-        name: "PostFlight"
+        name: "PostFlight",
+        components: {FlightProgresCard},
+        props: ['flight']
     }
 </script>
 
