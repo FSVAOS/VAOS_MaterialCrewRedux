@@ -24,15 +24,26 @@ import 'vuetify/dist/vuetify.min.css'
 import mainLayout from './views/Layouts/MainLayout'
 Vue.component('main-layout', mainLayout);
 
-Vue.use(Vuetify, {
-    options: {
-        customProperties: true
-    }
+Vue.use(Vuetify);
+
+const vuetify = new Vuetify({
+    theme: {
+        dark: true,
+        themes: {
+            dark: {
+                primary: window.appSettings.colors.primary
+            }
+        },
+        options: {
+            customProperties: true
+        }
+    },
 });
 
 new Vue({
     router,
     store,
+    vuetify,
     created()
     {
         console.log("Application Booted.");
