@@ -9,7 +9,7 @@
                     <v-img fill-height src="/img/vaos_df_bg-01.svg" gradient="rgba(100,115,201,.33), rgba(25,32,72,.7)">
                         <v-layout pa-2 column align-center fill-height class="lightbox white--text">
                             <v-spacer></v-spacer>
-                            <v-avatar size="84">
+                            <v-avatar size="130">
                                 <img src="https://pbs.twimg.com/profile_images/1151671407228706822/UZxOws2b_400x400.jpg" alt="John" style="border: white 3px solid;">
                             </v-avatar>
                             <v-flex shrink style="text-align:center">
@@ -40,33 +40,42 @@
                             </v-layout>
                         </v-img>
                         <v-list two-line>
-                            <v-list-tile>
-                                <v-list-tile-action>
+                            <v-list-item>
+                                <v-list-item-action>
                                     <v-icon>person</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-content>
-                                    <v-list-tile-title>Taylor Broad</v-list-tile-title>
-                                    <v-list-tile-sub-title>Owner</v-list-tile-sub-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
-                            <v-list-tile>
-                                <v-list-tile-action>
+                                </v-list-item-action>
+                                <v-list-item-content>
+                                    <v-list-item-title>Taylor Broad</v-list-item-title>
+                                    <v-list-item-subtitle>Owner</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-action>
                                     <v-icon>person</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-content>
-                                    <v-list-tile-title>KPDX - Portland International Airport</v-list-tile-title>
-                                    <v-list-tile-sub-title>Current Airport</v-list-tile-sub-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
-                            <v-list-tile>
-                                <v-list-tile-action>
+                                </v-list-item-action>
+                                <v-list-item-content>
+                                    <v-list-item-title>KPDX - Portland International Airport</v-list-item-title>
+                                    <v-list-item-subtitle>Current Airport</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-action>
+                                    <v-icon>home</v-icon>
+                                </v-list-item-action>
+                                <v-list-item-content>
+                                    <v-list-item-title>KPDX - Portland International Airport</v-list-item-title>
+                                    <v-list-item-subtitle>Home Airport</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-action>
                                     <v-icon>access_time</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-content>
-                                    <v-list-tile-title>104.5</v-list-tile-title>
-                                    <v-list-tile-sub-title>Hours</v-list-tile-sub-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
+                                </v-list-item-action>
+                                <v-list-item-content>
+                                    <v-list-item-title>104.5</v-list-item-title>
+                                    <v-list-item-subtitle>Hours</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
                         </v-list>
                     </v-card>
                 </v-flex>
