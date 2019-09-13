@@ -31,6 +31,14 @@
                         <v-list-item-title>Profile</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item link to="map">
+                    <v-list-item-icon>
+                        <v-icon>map</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title>Live Map</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
             </v-list>
             <template slot="append">
                 <v-layout pa-2 column align-center fill-height>
@@ -46,7 +54,7 @@
             <slot></slot>
         </v-content>
         <v-footer app>
-
+            VAOS Web 3.0 | Licensed for Entertainment Use
         </v-footer>
     </div>
 </template>
