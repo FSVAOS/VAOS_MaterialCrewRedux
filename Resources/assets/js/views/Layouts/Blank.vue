@@ -1,12 +1,12 @@
 <template>
     <div>
-        TEst
+        <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: "ProfileIndexView"
+        name: "Blank"
     }
 </script>
 

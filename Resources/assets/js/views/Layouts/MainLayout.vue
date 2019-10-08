@@ -40,17 +40,19 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
+            <!--
             <template slot="append">
                 <v-layout pa-2 column align-center fill-height>
                     <img src="/img/vaos_logo.svg" width="80%"/>
                 </v-layout>
             </template>
+            -->
         </v-navigation-drawer>
         <v-app-bar app>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>{{ comm_name }}</v-toolbar-title>
         </v-app-bar>
-        <v-content>
+        <v-content style="min-height: 100vh;">
             <slot></slot>
         </v-content>
         <v-footer app>
@@ -66,7 +68,8 @@
         name: "MainLayout",
         components: {SideNavFlightsCard, SideNavMenu},
         created() {
-            this.drawer = !!this.$vuetify.breakpoint.smAndUp;
+            console.log(this.$vuetify.breakpoint.lgAndUp);
+            this.drawer = !!this.$vuetify.breakpoint.lgAndUp;
         },
         data() {
             return {

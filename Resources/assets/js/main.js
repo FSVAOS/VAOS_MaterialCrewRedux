@@ -22,7 +22,9 @@ if (token) {
 import 'vuetify/dist/vuetify.min.css'
 
 import mainLayout from './views/Layouts/MainLayout'
+import Blank from "./views/Layouts/Blank";
 Vue.component('main-layout', mainLayout);
+Vue.component('blank-layout', Blank);
 
 Vue.use(Vuetify);
 

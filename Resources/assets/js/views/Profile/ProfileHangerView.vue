@@ -1,12 +1,10 @@
 <template>
-    <div>
-        TEst
-    </div>
+    
 </template>
 
 <script>
     export default {
-        name: "ProfileIndexView"
+        name: "ProfileHangerView"
     }
 </script>
 
