@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div class="f-callsign">SPK2616</div>
+        <div class="f-callsign">{{flight.callsign}}</div>
         <div class="info-flex">
             <div class="dep-apt">
-                <div class="icao">KLAX</div>
-                <div class="apt-name">Los Angeles International</div>
+                <div class="icao">{{flight.depapt.icao}}</div>
+                <div class="apt-name">{{flight.depapt.name}}</div>
             </div>
             <div class="arr-apt">
-                <div class="icao">KLAX</div>
-                <div class="apt-name">Los Angeles International</div>
+                <div class="icao">{{flight.arrapt.icao}}</div>
+                <div class="apt-name">{{flight.arrapt.name}}</div>
             </div>
         </div>
         <div class="progress-container">
@@ -24,7 +24,10 @@
             progress() {
                 return 50;
             }
-        }
+        },
+        props: [
+            'flight'
+        ]
     }
 </script>
 
