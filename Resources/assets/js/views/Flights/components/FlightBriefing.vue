@@ -11,10 +11,10 @@
 </template>
 
 <script>
-    import FlightProgresCard from "../../../components/FlightProgresCard";
+    import FlightProgressCard from "../../../components/FlightProgressCard";
     export default {
         name: "FlightBriefing",
-        components: {FlightProgresCard},
+        components: {FlightProgressCard},
         props: ['flight']
     }
 </script>

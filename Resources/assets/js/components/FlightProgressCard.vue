@@ -19,7 +19,7 @@
 
 <script>
     export default {
-        name: "FlightProgresCard",
+        name: "FlightProgressCard",
         computed: {
             progress() {
                 return 50;

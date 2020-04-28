@@ -89,7 +89,7 @@
 </template>
 
 <script>
-    import FlightProgresCard from "../../../components/FlightProgresCard";
+    import FlightProgresCard from "../../../components/FlightProgressCard";
     export default {
         name: "PostFlight",
         components: {FlightProgresCard},
