@@ -56,7 +56,7 @@
             <slot></slot>
         </v-content>
         <v-footer app>
-            VAOS Web 3.0 | Licensed for Entertainment Use
+            VAOS Classic 2.1 | Material Crew Redux
         </v-footer>
     </div>
 </template>

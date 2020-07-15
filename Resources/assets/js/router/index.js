@@ -1,7 +1,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import store from '../store'
 
 import Dashboard from '../views/Dashboard'
 import FlightListView from "../views/Flights/FlightListView";
@@ -16,9 +16,13 @@ import PersonalAircraftDetailedView from "../views/Aircraft/PersonalAircraftDeta
 import ProfileStatsView from "../views/Profile/ProfileStatsView";
 import iFrameContainerView from "../views/iFrameContainerView";
 import InterfaceSettingsAdminView from "../views/Admin/InterfaceSettingsAdminView";
+import ScheduleView from "../views/Schedule/ScheduleView";
 
 Vue.use(Router);
 
+function doAuth(to, from, next) {
+
+}
 export default new Router({
     routes: [
         { path: '/', name: 'dashboard', component: Dashboard },
@@ -27,7 +31,13 @@ export default new Router({
         { path: '/flights/new', name: 'new_flight', component: NewFlightSelection},
         { path: '/flights/upcoming', name: 'upcoming_flights', component: FlightListView},
         { path: '/flights/:id', name: 'flight_detailed', component: FlightDetailedView},
+        { path: '/schedule', name: 'schedule', component: ScheduleView},
+        { path: '/trips', name: 'trips', component: FlightListView},
+        { path: '/trips/create', name: 'new_trip', component: FlightListView},
         // User Profiles
+        { path: '/profile', redirect: to => {
+            return `/users/${this.$store.state.user.id}`;
+            }},
         { path: '/users/:id', name: 'profile', component: ProfileIndexView},
         { path: '/users/:id/logbook', name: 'profile_logbook', component: ProfileLogbookView},
         { path: '/users/:id/hanger', name: 'profile_hanger', component: ProfileHangerView},
