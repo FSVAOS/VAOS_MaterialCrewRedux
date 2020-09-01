@@ -10,6 +10,8 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
+import ignite from './IgniteJS'
+
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
@@ -20,7 +22,7 @@ if (token) {
 
 
 import 'vuetify/dist/vuetify.min.css'
-
+import '@mdi/font/css/materialdesignicons.css'
 import mainLayout from './views/Layouts/MainLayout'
 import Blank from "./views/Layouts/Blank";
 Vue.component('main-layout', mainLayout);
@@ -33,21 +35,32 @@ const vuetify = new Vuetify({
         dark: true,
         themes: {
             dark: {
-                primary: window.appSettings.colors.primary
+                primary: window.appSettings.colors.primary,
+                secondary: window.appSettings.colors.secondary,
+                accent: window.appSettings.colors.accent,
             }
         },
         options: {
             customProperties: true
         }
     },
+    icons: {
+        iconfont: 'mdi', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+    },
 });
-
 new Vue({
     router,
     store,
     vuetify,
+    data() {
+        return {
+            ignite: null
+        }
+    },
     created()
     {
+        this.$ignite = new ignite("127.0.0.1:5989");
+        this.$ignite.connect();
         console.log("Application Booted.");
     },
     mounted(){

@@ -36,7 +36,7 @@ export default new Router({
         { path: '/trips/create', name: 'new_trip', component: FlightListView},
         // User Profiles
         { path: '/profile', redirect: to => {
-            return `/users/${this.$store.state.user.id}`;
+            return `/users/${window.appSettings.user.id}`;
             }},
         { path: '/users/:id', name: 'profile', component: ProfileIndexView},
         { path: '/users/:id/logbook', name: 'profile_logbook', component: ProfileLogbookView},
@@ -45,6 +45,6 @@ export default new Router({
         { path: '/users/:id/hanger/:aircraft', name: 'aircraft_detailed', component: PersonalAircraftDetailedView},
         { path: '/settings', name: 'settings', component: SettingsView},
         { path: '/settings/admin', name: 'settings_admin', component: InterfaceSettingsAdminView},
-        { path: '/map', name: 'map', component: iFrameContainerView, meta: {frameUrl: "https://simvector.cardinalhorizon.com/"}}
+        { path: '/map', name: 'map', component: iFrameContainerView, meta: {frameUrl: "https://simvector.net/engine"}}
     ]
 });

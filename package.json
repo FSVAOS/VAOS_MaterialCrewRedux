@@ -16,10 +16,11 @@
     "vue-responsive-components": "^0.2.3",
     "vue-router": "^3.0.7",
     "vuetify": "^2.0.0",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "ws": "^7.3.1"
   },
   "devDependencies": {
-    "@mdi/font": "^3.8.95",
+    "@mdi/font": "^3.9.97",
     "@mdi/js": "^3.8.95",
     "cross-env": "^5.1.4",
     "laravel-mix": "^4.0.7",

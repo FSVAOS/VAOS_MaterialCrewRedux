@@ -6,6 +6,11 @@
     </v-app>
 </template>
 
+<style>
+    .v-application {
+        font-family: Europa Roboto sans-serif;
+    }
+</style>
 <script>
     const default_layout = "main";
     export default {
