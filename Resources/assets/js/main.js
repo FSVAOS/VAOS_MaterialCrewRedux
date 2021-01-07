@@ -62,6 +62,7 @@ new Vue({
         this.$ignite = new ignite("127.0.0.1:5989");
         this.$ignite.connect();
         console.log("Application Booted.");
+        this.$store.dispatch('profile/Load_Profile_Data', window.appSettings.user.id);
     },
     mounted(){
 

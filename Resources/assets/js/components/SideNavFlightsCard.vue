@@ -6,11 +6,11 @@
         </div>
         <div class="flight-flex-container">
             <div class="flight-button">
-                <div style="font-size: 32px; line-height: 32px;">0</div>
+                <div style="font-size: 32px; line-height: 32px;">{{ upcoming }}</div>
                 <div>Upcoming</div>
             </div>
             <div class="flight-button">
-                <div style="font-size: 32px; line-height: 32px;">0</div>
+                <div style="font-size: 32px; line-height: 32px;">{{ completed }}</div>
                 <div>Completed</div>
             </div>
         </div>
@@ -19,7 +19,15 @@
 
 <script>
     export default {
-        name: "SideNavFlightsCard"
+        name: "SideNavFlightsCard",
+        computed: {
+            upcoming() {
+                return this.$store.state.profile.upcoming
+            },
+            completed() {
+                return this.$store.state.profile.completed
+            }
+        }
     }
 </script>
 
