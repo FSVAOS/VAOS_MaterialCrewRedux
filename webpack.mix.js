@@ -6,9 +6,6 @@ mix.setPublicPath('../../public').mergeManifest();
 mix.options({
     extractVueStyles: true,
     })
-    .webpackConfig({
-        plugins: [new VuetifyLoader()]
-    })
     .js(__dirname + '/Resources/assets/js/main.js', 'js/materialcrewredux.js')
     .sass( __dirname + '/Resources/assets/sass/app.scss', 'css/materialcrewredux.css');
 

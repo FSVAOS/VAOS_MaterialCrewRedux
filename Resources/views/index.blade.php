@@ -29,7 +29,10 @@
             'accent' => '#790000',
             'secondary' => '#002561' // 002561 dark 17269c light
         ],
-        'user' => \Illuminate\Support\Facades\Auth::user()
+        'user' => \Illuminate\Support\Facades\Auth::user(),
+        'default_background' => env('VAOS_MCR_DEFAULT_BACKGROUND', '/img/default_background.jpg'),
+        'default_cover' => env('VAOS_MCR_DEFAULT_COVER', '/img/default_cover.png'),
+        'community_logo' => env('VAOS_MCR_COMMUNITY_LOGO', '/img/VAOSLogo.svg')
     ])?>
 </script>
 <script src="{{ mix('js/materialcrewredux.js') }}"></script>

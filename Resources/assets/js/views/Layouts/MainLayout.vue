@@ -24,6 +24,14 @@
                         <v-list-item-title>Dashboard</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item link to="/schedule">
+                    <v-list-item-icon>
+                        <v-icon>mdi-airplane-takeoff</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title>Schedule</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
                 <v-list-item link to="profile">
                     <v-list-item-icon>
                         <v-icon>mdi-account</v-icon>
@@ -63,9 +71,10 @@
         </v-app-bar>
         <v-content style="min-height: 100vh;">
             <slot></slot>
+            <v-snackbar v-model="snackbar">{{ snackbar_text }}</v-snackbar>
         </v-content>
         <v-footer style="padding: 0" app>
-            <div style="background: #38c172; padding: 0 1rem;"><v-icon>mdi-check</v-icon>Ignite Connected</div>
+            <div :class="ignite_status.classes" style="padding: 0 1rem;"><v-icon>{{ ignite_status.icon }}</v-icon>Ignite {{ignite_status.text}}</div>
         </v-footer>
     </div>
 </template>
@@ -79,6 +88,7 @@
         created() {
             console.log(this.$vuetify.breakpoint.lgAndUp);
             this.drawer = !!this.$vuetify.breakpoint.lgAndUp;
+            console.log(this.$store)
         },
         computed: {
             user() {
@@ -92,11 +102,11 @@
                 }
             },
             ignite_status() {
-                let status = this.$store.ignite.state.status;
+                let status = this.$store.state.clients.status;
                 switch (status) {
-                    case 0: return {text: "Disconnected",icon: "close", classes: {ignite_disconnected: true}}
-                    case 1: return {text: "No Sim Data",icon: "plane", classes: {ignite_nosim: true}}
-                    case 2: return {text: "Connected",icon: "check", classes: {ignite_disconnected: true}}
+                    case 0: return {text: "Disconnected",icon: "mdi-close", classes: {ignite_disconnected: true}}
+                    case 1: return {text: "No Sim Data",icon: "mdi-plane", classes: {ignite_nosim: true}}
+                    case 2: return {text: "Connected",icon: "mdi-check", classes: {ignite_disconnected: true}}
                 }
             }
         },
@@ -104,6 +114,8 @@
             return {
                 comm_name: window.appSettings.community_name,
                 drawer: false,
+                snackbar: false,
+                snackbar_text: "",
                 items: [
                     {
                         icon: "dashboard",

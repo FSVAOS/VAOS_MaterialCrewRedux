@@ -17,6 +17,7 @@ import ProfileStatsView from "../views/Profile/ProfileStatsView";
 import iFrameContainerView from "../views/iFrameContainerView";
 import InterfaceSettingsAdminView from "../views/Admin/InterfaceSettingsAdminView";
 import ScheduleView from "../views/Schedule/ScheduleView";
+import TripPlannerView from "../views/TripPlannerView";
 
 Vue.use(Router);
 
@@ -30,6 +31,7 @@ export default new Router({
         // Flight Management and Browsing System
         { path: '/flights/new', name: 'new_flight', component: NewFlightSelection},
         { path: '/flights/upcoming', name: 'upcoming_flights', component: FlightListView},
+        { path: '/flights/planner', name: 'trip_planner', component: TripPlannerView},
         { path: '/flights/:id', name: 'flight_detailed', component: FlightDetailedView},
         { path: '/schedule', name: 'schedule', component: ScheduleView},
         { path: '/trips', name: 'trips', component: FlightListView},

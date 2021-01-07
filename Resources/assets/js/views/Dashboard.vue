@@ -1,11 +1,11 @@
 <template>
     <div>
         <div style="position: fixed; height: inherit; width: 100%; z-index: 0">
-            <v-img :aspect-ratio="16/9" src="/img/default_background.jpg" gradient="rgba(100,115,201,.33), rgba(25,32,72,.7)"></v-img>
+            <v-img :aspect-ratio="16/9" src="/img/default_background.jpg"></v-img>
         </div>
         <div style="position: relative; z-index: 1; padding-top: 5rem">
             <v-container grid-list-lg>
-                <img src="/img/SparkFlightOps.svg" height="200px"/>
+                <img :src="app_settings.community_logo" style="display: block; height: 200px; max-width: 500px;"/>
                 <v-layout grid row>
                     <v-flex lg4 md6 sm12>
                         <v-card class="mx-auto mb-4">
@@ -19,9 +19,9 @@
                         <v-card class="mx-auto">
                             <v-card-title>Statistics</v-card-title>
                             <v-list>
-                                <v-list-item>Total Flights: 200</v-list-item>
-                                <v-list-item>Total Hours: 156.2h</v-list-item>
-                                <v-list-item>Total Airports Visited: 27</v-list-item>
+                                <v-list-item>Total Flights: 0</v-list-item>
+                                <v-list-item>Total Hours: 0h</v-list-item>
+                                <v-list-item>Total Airports Visited: 0</v-list-item>
                             </v-list>
                             <v-card-actions>
                                 <v-btn text color="primary">View Profile</v-btn>
@@ -46,13 +46,15 @@
             </v-container>
         </div>
     </div>
-
 </template>
 
 <script>
     export default {
         name: "Dashboard",
         computed: {
+            app_settings() {
+                return window.appSettings;
+            },
             user() {
                 return window.appSettings.user;
             }

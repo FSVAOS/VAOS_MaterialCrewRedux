@@ -13,10 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(["prefix" => '/materialcrewredux', "middleware" => 'auth:api'], function () {
+Route::group(["prefix" => '/materialcrewredux'], function () {
+    Route::get('/user', 'ProfileController@index');
     Route::group(["prefix" => 'flights'], function () {
         Route::get('/', 'FlightsController@index');
-        Route::post('/', 'FlightsController@newFlight');
+        Route::post('/', 'FlightsController@createBid');
         Route::get('/schedule', 'FlightsController@getSchedule');
     });
 });
