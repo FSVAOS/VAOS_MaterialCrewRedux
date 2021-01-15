@@ -3,9 +3,9 @@
         <div class="flight-card-content">
             <div class="flight-callsign">{{info.callsign}}</div>
             <div class="bottom-info">
-                <span><v-icon>flight_takeoff</v-icon>Test</span>
-                <span><v-icon>flight_land</v-icon>Test</span>
-                <span><v-icon>flight</v-icon>Test</span>
+                <span><v-icon>flight_takeoff</v-icon>{{info.depapt.icao}}</span>
+                <span><v-icon>flight_land</v-icon>{{info.arrapt.icao}}</span>
+                <span><v-icon>flight</v-icon>{{info.aircraft.icao}}</span>
             </div>
         </div>
     </v-img>

@@ -32,6 +32,7 @@
 
 <script>
     import ApiPullAutoComplete from "../../components/ApiPullAutoComplete";
+    import {EventBus} from "../../eventbus";
     import axios from 'axios'
     export default {
         name: "ScheduleView",
@@ -69,9 +70,11 @@
                 axios.post('/api/materialcrewredux/flights', {type: 'schedule', id: id}).then(res => {
                     // Looks like it worked. Reload user data to update user account.
                     this.$store.dispatch('profile/Load_Profile_Data');
+                    EventBus.$emit('snackbar_trigger', {text: `Route Added Successfully`, color: 'success'
+                })
                 }).catch(err => {
                     // Didn't work. Show a dialog saying we got the error and why.'
-                    alert('There was a problem!!!');
+                    console.log(err);
                 })
             }
         },

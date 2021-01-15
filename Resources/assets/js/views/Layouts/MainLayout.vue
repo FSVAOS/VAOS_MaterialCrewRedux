@@ -32,7 +32,7 @@
                         <v-list-item-title>Schedule</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item link to="profile">
+                <v-list-item link to="/profile">
                     <v-list-item-icon>
                         <v-icon>mdi-account</v-icon>
                     </v-list-item-icon>
@@ -40,7 +40,7 @@
                         <v-list-item-title>Profile</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item link to="map">
+                <v-list-item link to="/map">
                     <v-list-item-icon>
                         <v-icon>mdi-map</v-icon>
                     </v-list-item-icon>
@@ -48,7 +48,7 @@
                         <v-list-item-title>Live Map</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item link to="downloads">
+                <v-list-item link to="/downloads">
                     <v-list-item-icon>
                         <v-icon>mdi-folder-download</v-icon>
                     </v-list-item-icon>
@@ -69,70 +69,92 @@
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>{{ comm_name }}</v-toolbar-title>
         </v-app-bar>
-        <v-content style="min-height: 100vh;">
+        <v-main style="min-height: 100vh;">
             <slot></slot>
-            <v-snackbar v-model="snackbar">{{ snackbar_text }}</v-snackbar>
-        </v-content>
+            <v-snackbar v-model="snackbar" :color="snackbar_color">{{ snackbar_text }}
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                        color="primary"
+                        text
+                        v-bind="attrs"
+                        @click="snackbar = false"
+                    >
+                        Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
+        </v-main>
         <v-footer style="padding: 0" app>
-            <div :class="ignite_status.classes" style="padding: 0 1rem;"><v-icon>{{ ignite_status.icon }}</v-icon>Ignite {{ignite_status.text}}</div>
+            <div :class="ignite_status.classes" style="padding: 0 1rem;" @click="openIgniteSettings()"><v-icon>{{ ignite_status.icon }}</v-icon>Ignite {{ignite_status.text}}</div>
         </v-footer>
     </div>
 </template>
 
 <script>
-    import SideNavMenu from "../../components/SideNavMenu";
-    import SideNavFlightsCard from "../../components/SideNavFlightsCard";
-    export default {
-        name: "MainLayout",
-        components: {SideNavFlightsCard, SideNavMenu},
-        created() {
-            console.log(this.$vuetify.breakpoint.lgAndUp);
-            this.drawer = !!this.$vuetify.breakpoint.lgAndUp;
-            console.log(this.$store)
+import SideNavMenu from "../../components/SideNavMenu";
+import SideNavFlightsCard from "../../components/SideNavFlightsCard";
+import {EventBus} from '../../eventbus'
+export default {
+    name: "MainLayout",
+    components: {SideNavFlightsCard, SideNavMenu},
+    created() {
+        console.log(this.$vuetify.breakpoint.lgAndUp);
+        this.drawer = !!this.$vuetify.breakpoint.lgAndUp;
+        console.log(this.$store)
+        EventBus.$on('snackbar_trigger', this.activate_snackbar)
+    },
+    methods: {
+        openIgniteSettings() {},
+        activate_snackbar(message) {
+            this.snackbar_text = message.text;
+            this.snackbar_color = message.color;
+            this.snackbar = true;
         },
-        computed: {
-            user() {
-                return window.appSettings.user;
-            },
-            cover() {
-                if (this.user.cover_url) {
-                    return this.user.cover_url;
-                } else {
-                    return "/img/default_cover.png";
-                }
-            },
-            ignite_status() {
-                let status = this.$store.state.clients.status;
-                switch (status) {
-                    case 0: return {text: "Disconnected",icon: "mdi-close", classes: {ignite_disconnected: true}}
-                    case 1: return {text: "No Sim Data",icon: "mdi-plane", classes: {ignite_nosim: true}}
-                    case 2: return {text: "Connected",icon: "mdi-check", classes: {ignite_disconnected: true}}
-                }
+    },
+    computed: {
+        user() {
+            return window.appSettings.user;
+        },
+        cover() {
+            if (this.user.cover_url) {
+                return this.user.cover_url;
+            } else {
+                return "/img/default_cover.png";
             }
         },
-        data() {
-            return {
-                comm_name: window.appSettings.community_name,
-                drawer: false,
-                snackbar: false,
-                snackbar_text: "",
-                items: [
-                    {
-                        icon: "dashboard",
-                        title: "Dashboard"
-                    },
-                    {
-                        icon: "person",
-                        title: "Profile"
-                    },
-                    {
-                        icon: "settings",
-                        title: "Settings"
-                    }
-                ]
+        ignite_status() {
+            let status = this.$store.state.clients.status;
+            switch (status) {
+                case 0: return {text: "Disconnected",icon: "mdi-close", classes: {ignite_disconnected: true}}
+                case 1: return {text: "No Sim Data",icon: "mdi-plane", classes: {ignite_nosim: true}}
+                case 2: return {text: "Connected",icon: "mdi-check", classes: {ignite_disconnected: true}}
             }
         }
+    },
+    data() {
+        return {
+            comm_name: window.appSettings.community_name,
+            drawer: false,
+            snackbar: false,
+            snackbar_color: undefined,
+            snackbar_text: "",
+            items: [
+                {
+                    icon: "dashboard",
+                    title: "Dashboard"
+                },
+                {
+                    icon: "person",
+                    title: "Profile"
+                },
+                {
+                    icon: "settings",
+                    title: "Settings"
+                }
+            ]
+        }
     }
+}
 </script>
 
 <style scoped>

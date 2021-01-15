@@ -5,7 +5,7 @@
             <v-btn block color="primary" to="flights/new"><v-icon left>mdi-plus</v-icon>New Flight</v-btn>
         </div>
         <div class="flight-flex-container">
-            <div class="flight-button">
+            <div class="flight-button" @click="navUpcoming()">
                 <div style="font-size: 32px; line-height: 32px;">{{ upcoming }}</div>
                 <div>Upcoming</div>
             </div>
@@ -26,6 +26,11 @@
             },
             completed() {
                 return this.$store.state.profile.completed
+            }
+        },
+        methods: {
+            navUpcoming() {
+                this.$router.push('/flights/upcoming');
             }
         }
     }

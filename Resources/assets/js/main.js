@@ -30,6 +30,8 @@ Vue.component('blank-layout', Blank);
 
 Vue.use(Vuetify);
 
+Vue.prototype.$http = axios;
+Vue.prototype.$ignite = new ignite("127.0.0.1:5989");
 const vuetify = new Vuetify({
     theme: {
         dark: true,
@@ -59,7 +61,7 @@ new Vue({
     },
     created()
     {
-        this.$ignite = new ignite("127.0.0.1:5989");
+
         this.$ignite.connect();
         console.log("Application Booted.");
         this.$store.dispatch('profile/Load_Profile_Data', window.appSettings.user.id);

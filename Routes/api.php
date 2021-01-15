@@ -19,5 +19,7 @@ Route::group(["prefix" => '/materialcrewredux'], function () {
         Route::get('/', 'FlightsController@index');
         Route::post('/', 'FlightsController@createBid');
         Route::get('/schedule', 'FlightsController@getSchedule');
+        Route::get('/{id}', 'FlightsController@show');
+        Route::post('/{id}/start', 'FlightsController@startFlight');
     });
 });
