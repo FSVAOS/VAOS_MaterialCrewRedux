@@ -1,14 +1,17 @@
 <template>
-    <v-img height="200px" src="https://i.imgur.com/Fj4dbUx.png" gradient="rgba(100,115,201,.33), rgba(25,32,72,.7)" class="elevation-5">
+    <v-card class="mx-auto mb-4">
+    <v-img height="150px" src="https://i.imgur.com/Fj4dbUx.png" gradient="rgba(100,115,201,.33), rgba(25,32,72,.7)" class="elevation-5">
         <div class="flight-card-content">
             <div class="flight-callsign">{{info.callsign}}</div>
             <div class="bottom-info">
-                <span><v-icon>flight_takeoff</v-icon>{{info.depapt.icao}}</span>
-                <span><v-icon>flight_land</v-icon>{{info.arrapt.icao}}</span>
-                <span><v-icon>flight</v-icon>{{info.aircraft.icao}}</span>
+                <span><v-icon>mdi-airplane-takeoff</v-icon>{{info.depapt.icao}}</span>
+                <span><v-icon>mdi-airplane-landing</v-icon>{{info.arrapt.icao}}</span>
+                <span><v-icon>mdi-airplane</v-icon>{{info.primary_aircraft}}</span>
             </div>
         </div>
     </v-img>
+        <slot></slot>
+    </v-card>
 </template>
 
 <script>

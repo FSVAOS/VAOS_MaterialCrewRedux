@@ -2,10 +2,13 @@
     <div>
         <div>
             <v-container class="flex">
-                <v-layout grid row style="max-width: 400px; margin: 0 auto;">
-                    <v-flex md6 sm12>
+                <v-layout grid row style="max-width: 500px; margin: 0 auto;">
+                    <v-flex md6 sm12 px-2>
                         <ApiPullAutoComplete v-model="filter_options.depapt" label="Origin" :returnobj="true" itemtext="name_combined" url="/api/airports/search"/>
                         <ApiPullAutoComplete v-model="filter_options.arrapt" label="Destination" :returnobj="true" itemtext="name_combined" url="/api/airports/search"/>
+                    </v-flex>
+                    <v-flex md6 sm12 px-2>
+                        <ApiPullAutoComplete v-model="filter_options.aviation_group" label="Airline" :returnobj="true" itemtext="name_combined" url="/api/aviation_groups"/>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -15,6 +18,12 @@
                 <v-pagination v-if="Math.ceil(filtered_list.length/perPage)" v-model="page" :length="Math.ceil(filtered_list.length/perPage)" total-visible="10"></v-pagination>
                 <v-layout grid row>
                     <v-flex lg4 md6 sm12 v-for="flight in visibleSchedule" :key="flight.id">
+                        <FlightCard :info="flight">
+                            <v-card-actions>
+                                <v-btn color="primary" @click="create_bid(flight.id)">Create Bid</v-btn>
+                            </v-card-actions>
+                        </FlightCard>
+                        <!--
                         <v-card class="mx-auto mb-4" v-if="card_mode">
                             <v-img class="white--text align-end" height="150px" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/SLC_airport%2C_2010.jpg"></v-img>
                             <v-card-title>{{flight.callsign}}</v-card-title>
@@ -23,6 +32,7 @@
                                 <v-btn color="primary" @click="create_bid(flight.id)">Create Bid</v-btn>
                             </v-card-actions>
                         </v-card>
+                        -->
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -34,9 +44,10 @@
     import ApiPullAutoComplete from "../../components/ApiPullAutoComplete";
     import {EventBus} from "../../eventbus";
     import axios from 'axios'
+    import FlightCard from "../../components/FlightCard";
     export default {
         name: "ScheduleView",
-        components: {ApiPullAutoComplete},
+        components: {FlightCard, ApiPullAutoComplete},
         data() {
             return {
                 schedule_list: [],
@@ -45,7 +56,8 @@
                 page: 1,
                 filter_options: {
                     depapt: null,
-                    arrapt: null
+                    arrapt: null,
+                    aviation_group: null
                 },
                 filter_keys: {
                     depapt: {
@@ -54,6 +66,10 @@
                     },
                     arrapt: {
                         value: "arrapt_id",
+                        filter: "id"
+                    },
+                    aviation_group: {
+                        value: "airline_id",
                         filter: "id"
                     }
                 }
