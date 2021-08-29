@@ -11,17 +11,18 @@
                         <v-card class="mx-auto mb-4">
                             <v-img class="white--text align-end" height="150px" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/SLC_airport%2C_2010.jpg"></v-img>
                             <v-card-title>Welcome Back {{ user.first_name }}!</v-card-title>
-                            <v-card-subtitle class="pb-0">Currently at <b>Salt Lake City International Airport</b></v-card-subtitle>
+                            <!--
+                            <v-card-subtitle class="pb-0">Currently at <b>{{ user.current_location.name }}</b></v-card-subtitle>
                             <v-card-actions>
                                 <v-btn text color="primary">Start Flight Here</v-btn>
                             </v-card-actions>
+                            -->
                         </v-card>
                         <v-card class="mx-auto">
                             <v-card-title>Statistics</v-card-title>
                             <v-list>
-                                <v-list-item>Total Flights: 0</v-list-item>
-                                <v-list-item>Total Hours: 0h</v-list-item>
-                                <v-list-item>Total Airports Visited: 0</v-list-item>
+                                <v-list-item>Total Flights: {{ user.flight_count }}</v-list-item>
+                                <v-list-item>Total Hours: {{user.total_hours}}h</v-list-item>
                             </v-list>
                             <v-card-actions>
                                 <v-btn text color="primary">View Profile</v-btn>
